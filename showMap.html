@@ -4,6 +4,14 @@
       <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
       <title>Creating a Store Locator on Google Maps</title>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+      <!-- Optional theme -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
       
     <style>
       /* Always set the map height explicitly to define the size of the div
@@ -41,7 +49,7 @@
         var infoWindow;
         var locationSelect;
         var lat;
-        var lang;
+        var lng;
 
 
         function getLocation() 
@@ -68,10 +76,10 @@
           function initMap() 
           { 
             getLocation();
-            var sydney = {lat: -33.863276, lng: 151.107977};
+           // var sydney = {lat: -33.863276, lng: 151.107977};
             map = new google.maps.Map(document.getElementById('map'), {
-              //center: {lat:lat , lng:lng},
-              center: sydney,
+              center: {lat:lat , lng:lng},
+              //center: sydney,
               zoom: 16,
               mapTypeId: 'roadmap',
               mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU}
@@ -91,8 +99,9 @@
 
          function searchLocations() 
          {
-          var sydney = {lat: -33.863276, lng: 151.107977};
-          searchLocationsNear(sydney);
+          //var sydney = {lat: -33.863276, lng: 151.107977};
+          //searchLocationsNear(sydney);
+          searchLocationsNear();
           /* var address = document.getElementById("addressInput").value;
            var geocoder = new google.maps.Geocoder();
            geocoder.geocode({address: address}, function(results, status) {
@@ -118,20 +127,23 @@
            locationSelect.appendChild(option);
          }
 
-         function searchLocationsNear(center) 
+         function searchLocationsNear() 
          {
-             clearLocations();
+             
              radius = 11; ///////
              //var radius = document.getElementById('radiusSelect').value;
-             var searchUrl = "storelocator.php?lat=" + center.lat + "&lng=" + center.lng +"&radius=" + radius;
+             var searchUrl = "storelocator.php?lat=" + lat + "&lng=" + lng +"&radius=" + radius;
              //alert(searchUrl);
 
              downloadUrl(searchUrl, function(data) {
                var xml = parseXml(data);
                var markerNodes = xml.documentElement.getElementsByTagName("marker");
                var bounds = new google.maps.LatLngBounds();
-               //alert(markerNodes.length);
-
+               alert(markerNodes.length);
+              if(markerNodes.length > 0)
+              {
+                //alert(markerNodes.length);
+                clearLocations();
                for (var i = 0; i < markerNodes.length; i++) 
                {
                 // alert("yay");
@@ -147,6 +159,7 @@
                    createMarker(latlng, name, address , id);
                    bounds.extend(latlng);
                }
+              
 
                // Iterate the markers array
                 markers.forEach(function(marker)
@@ -162,8 +175,9 @@
                locationSelect.onchange = function() {
                  var markerNum = locationSelect.options[locationSelect.selectedIndex].value;
                  google.maps.event.trigger(markers[markerNum], 'click');
-               };
+               };}
              });
+            
          }
 
          function createMarker(latlng, name, address, id) 
