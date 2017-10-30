@@ -1,53 +1,77 @@
 <html>
-<head>
-    <link rel = " stylesheet" type="text/css" href="stylesheet.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <head>
+        <link rel = " stylesheet" type="text/css" href="stylesheet.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+        <script> src = "Java.js"></script>
+        <script>
+            function getLocation() 
+            {
+                if (navigator.geolocation) 
+                {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                } 
+                else 
+                {
+                    alert("Geolocation is not supported by this browser.");
+                }
+            }
 
-</head>
-<body>
-<script> src = "Java.js"></script>
-</body>
-</html>>
+            function showPosition(position) 
+            {
+                lat = position.coords.latitude;
+                lng = position.coords.longitude;
+                document.getElementById('lat').value = lat;
+                document.getElementById('lng').value = lng;
+                //map.setCenter(new google.maps.LatLng(lat, lng));
+            }
+        </script>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="pr-wrap">
-                <div class="pass-reset">
-                    <label>
-                        Enter the email you signed up with</label>
-                    <input type="email" placeholder="Email" />
-                    <input type="submit" value="Submit" class="pass-reset-submit btn btn-success btn-sm" />
-                </div>
-            </div>
-            <div class="wrap">
-                <p class="form-title">
-                    Register</p>
-                <form class="login">
-                <input type="text" placeholder="Username" />
-                <input type="text" placeholder="UserId" />
-                <input type="password" placeholder="Password" />
-                <input type="text" placeholder="Phonenumber" />
-                <input type="text" placeholder="Address" />
-                <input type="submit" value="Register" class="btn btn-success btn-sm" />
-                <div class="remember-forgot">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" />
-                                    Remember Me
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-md-6 forgot-pass-content">
-                            <a href="javascription:void(0)" class="forgot-pass">Forgot Password</a>
-                        </div>
+    </head>
+    <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pr-wrap">
+                    <div class="pass-reset">
+                        <label>
+                            Enter the email you signed up with</label>
+                        <input type="email" placeholder="Email" />
+                        <input type="submit" value="Submit" class="pass-reset-submit btn btn-success btn-sm" />
                     </div>
                 </div>
-                </form>
+                <div class="wrap">
+                    <p class="form-title">
+                        Register</p>
+                    <form class="login">
+                    <input type="text" placeholder="Username" />
+                    <input type="text" placeholder="UserId" />
+                    <input type="password" placeholder="Password" />
+                    <input type="text" placeholder="Phonenumber" />
+                    <input type="text" placeholder="Address" />
+                    <input type="hidden" id = "lat" value = "">
+                    <input type="hidden" id = "lng" value = "">
+                    <input type="submit" value="Register" class="btn btn-success btn-sm" />
+                    <div class="remember-forgot">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" />
+                                        Remember Me
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 forgot-pass-content">
+                                <a href="javascription:void(0)" class="forgot-pass">Forgot Password</a>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                </div>
             </div>
         </div>
+        
     </div>
-    
-</div>
+    </div>
+</body>
+</html>
