@@ -153,7 +153,7 @@
                 {
                   // Set up a click event listener for each marker in the array
                   marker.addListener('click', function() {
-                    window.location.href = "searchOnStore.php?id=" + id;
+                    //window.location.href = "searchOnStore.php?id=" + id;
                   });
                 });
 
@@ -179,6 +179,9 @@
               
               infoWindow.setContent(html);
               infoWindow.open(map, marker);
+              //alert("searchOnStore.php?id=" + id);
+              var link = "searchOnStore.php?id=" + id
+              window.location.href = link;
               //this.setIcon(activeicon);
               iAmSelected(id);
             });
@@ -231,7 +234,9 @@
          ////////// MY FUNCTIONS
          function iAmSelected()
          {
-          window.location = "https://www.google.co.in";
+          //window.location = "https://www.google.co.in";
+          alert(id);
+          window.location = ("searchOnStore.php?id=" + id);
          }
 
 
