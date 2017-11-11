@@ -8,14 +8,11 @@
     $node = $dom->createElement("markers");
     $parnode = $dom->appendChild($node);
 
-    $query = $query = sprintf("SELECT shop_id, shop_name, address, lat, lng, ( 3959 * acos( cos( radians('%s') ) * cos( radians( lat ) ) * cos( radians( lng ) - radians('%s') ) 
-    + sin( radians('%s') ) * sin( radians( lat ) ) ) ) AS distance FROM shops HAVING distance < '%s' ORDER BY distance LIMIT 0 , 20",
-    mysql_real_escape_string($center_lat),
-    mysql_real_escape_string($center_lng),
-    mysql_real_escape_string($center_lat),
-    mysql_real_escape_string($radius));
-
+    $query = "SELECT Shop_id, Shop_Name, addr, lat, lng, ( 3959 * acos( cos( radians('$center_lat') ) * cos( radians( lat ) ) * cos( radians( lng ) - radians('$center_lng') ) 
+    + sin( radians('$center_lat') ) * sin( radians( lat ) ) ) ) AS distance FROM shops_table HAVING distance < '$radius' ORDER BY distance LIMIT 0 , 20";
+   // echo $query;
     $result = mysqli_query($db, $query);
+   // echo mysqli_num_rows($result);
 
     header("Content-type: text/xml");
 
@@ -23,12 +20,13 @@
     {
         $node = $dom->createElement("marker");
         $newnode = $parnode->appendChild($node);
-        $newnode->setAttribute("id", $row['shop_id']);
-        $newnode->setAttribute("name", $row['shop_name']);
-        $newnode->setAttribute("address", $row['address']);
+        $newnode->setAttribute("id", $row['Shop_id']);
+        $newnode->setAttribute("name", $row['Shop_Name']);
+        $newnode->setAttribute("address", $row['addr']);
         $newnode->setAttribute("lat", $row['lat']);
         $newnode->setAttribute("lng", $row['lng']);
         $newnode->setAttribute("distance", $row['distance']);
     }
     echo $dom->saveXML();
+    //storelocator.php?lat=-33.863276&lng=151.107977&radius=11
 ?>
