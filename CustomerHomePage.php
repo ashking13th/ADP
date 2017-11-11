@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel = "stylesheet" href = "HomePage.css">
+    <link rel = "stylesheet" href = "CustomerHomePage.css">
     <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   </head>
@@ -17,7 +17,7 @@
       <div class="container">
         <div class="navbar-header">
           <div class="animbrand">
-            <a class="navbar-brand animate" href="HomePage.php">Advanced Shopping Assistant</a>
+            <a class="navbar-brand animate" href="CustomerHomePage.php">Advanced Shopping Assistant</a>
           </div>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
