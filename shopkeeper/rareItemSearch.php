@@ -1,32 +1,15 @@
 <?php
     include('config.php');
-    $id = $_POST['product_id'];
-    $query = $query = sprintf("SELECT shop_id, shop_name, address, lat, lng, ( 3959 * acos( cos( radians('%s') ) * cos( radians( lat ) ) * cos( radians( lng ) - radians('%s') ) 
-    + sin( radians('%s') ) * sin( radians( lat ) ) ) ) AS distance FROM shops HAVING distance < '%s' ORDER BY distance LIMIT 0 , 20",
-    mysql_real_escape_string($center_lat),
-    mysql_real_escape_string($center_lng),
-    mysql_real_escape_string($center_lat),
-    mysql_real_escape_string($radius));
-
+    $pn = $_POST['product_name'];
+    $sql = "SELECT product_id, product_name FROM product_table WHERE product_name LIKE '%".$pn."%'";
     $result = mysqli_query($db, $query);
-
     while($row = mysqli_fetch_array($result))
     {
-        $sid = $row['shop_id'];
-        $table_name = "tabl".$sid;
-        $sql = "SELECT * FROM $table_name WHERE product_id = $id";
-        $res2 = mysqli_query($db, $sql);
-        if($res2 == false)
-        {
-
-        }
-        else if(mysqli_num_rows($res2) == 0)
-        {
-
-        }
-        else
-        {
-            
-        }
+        ?>
+        <form action = "setSession.php" method = "POST">
+            <input type = "hidden" name = "pid" value = <?php echo $row['product_id']; ?>>
+            <button type = "submit" class = "link-button"> <?php echo $row['product_name'] ?> </button>
+        </form>
+        <?php
     }
 ?>
