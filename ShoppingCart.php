@@ -12,134 +12,136 @@
 
   <body>
 
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container-fluid">
+    <nav class="navbar navbar-fixed-top navbar-bootsnipp animate" role="navigation">
+      <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>        
-        </div>
-
-        <div class="collapse navbar-collapse">
-          <ul class = "nav navbar-nav navbar-left">
-          <a id = "title" class="navbar-brand" href="HomePage.php"><h3><strong>Advanced Shopping Assistant</strong></h3></a>  
-          </ul> 
-
-          <form class = "nav navbar-form navbar-left">
-            <div id="custom-search-input">
-              <div class="input-group col-md-12">
-                <input type="text" class="  search-query form-control" placeholder="Search for Item" />
-                <span class="input-group-btn">
-                  <button type="button" class="btn btn-danger">
-                    <span class=" glyphicon glyphicon-search"></span>
-                  </button>
-                </span>
-              </div>
-            </div>
-          </form>
-
-          <div id = "Links">
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="HomePage.php" style =" color: #33a8ff;"><h4><span class="glyphicon glyphicon-home"></span> Home</h4></a></li>
-            </ul>
+          <div class="animbrand">
+            <a class="navbar-brand animate" href="CustomerHomePage.php" style="margin-top: 20px; color: #FFFFFF;">Advanced Shopping Assistant</a>
           </div>
         </div>
-      </div>
-    </nav>      
 
+      <form class = "nav navbar-form navbar-left">
+        <div id="custom-search-input">
+          <div class="input-group col-md-12">
+            <input type="text" class="  search-query form-control" placeholder="Search for Item" />
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-danger">
+                <span class=" glyphicon glyphicon-search"></span>
+              </button>
+            </span>
+          </div>
+        </div>
+      </form>
 
-    <div class = "container">  
-      <div class = "row">
-      	<div id = "row2">
-      		<div class="col-md-offset-1">
-        		<h4><strong><i>Shopping Cart:</i></strong></h4>
-        	</div>
+        <div id = "Links">
+	        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+	          <ul class="nav navbar-nav navbar-right">
+	          <li><a href="CustomerHomePage.php" style ="background-color: transparent !important;color: #FFFFFF;"><h4><span class="glyphicon glyphicon-home"></span> Home</h4></a></li>
+	          <li><a href="#" style ="background-color: transparent !important; color: #FFFFFF;"><h4><span class="glyphicon glyphicon-map-marker"></span> Find Shop</h4></a></li>
+	          </ul>
+
+	        </div>
         </div>
       </div>
-    </div>  
+    </nav>
 
-    <div id = "ProductDisplay">
-		<div class="container">
-		    <div class="row">
-		        <div class="col-sm-12 col-md-10 col-md-offset-1">
+    <div id = "bod">
+	  	<div class = "container">  
+	      <div class = "row">
+	      	<div id = "row2">
+	      		<div class="col-md-offset-1">
+	        		<h4><strong><i>Shopping Cart:</i></strong></h4>
+	        	</div>
+	        </div>
+	      </div>
+	    </div>  
 
-		    	<div class = "panel panel-default">
-		    	<div class ="panel-body">
-		            <table class="table table-hover">
-		                
-		                <thead>
-		                    <tr>
-		                        <th>Product</th>
-		                        <th>Quantity</th>
-		                        <th class="text-center">Price</th>
-		                        <th class="text-center">Total</th>
-		                        <th> </th>
-		                    </tr>
-		                </thead>
+	    <div id = "ProductDisplay">
+			<div class="container">
+			    <div class="row">
+			        <div class="col-sm-12 col-md-10 col-md-offset-1">
 
-		                <tbody>
+			    	<div class = "panel panel-default">
+			    	<div class ="panel-body">
+			            <table class="table table-hover">
+			                
+			                <thead>
+			                    <tr>
+			                        <th>Product</th>
+			                        <th>Quantity</th>
+			                        <th class="text-center">Price</th>
+			                        <th class="text-center">Total</th>
+			                        <th> </th>
+			                    </tr>
+			                </thead>
 
-		                	<!--Replicate this row for more products-->
-		                    <tr>
-		                        <td class="col-sm-8 col-md-6">
-			                        <div class="media">
-			                            <div class="media-left">
-			                            	<img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;">
-			                            </div>	
-			                            <div class="media-body">
-			                                <h4 class="media-heading">Product name</h4>
-			                                <h5 class="media-heading">Shop Name</h5>
-			                            </div>
-			                        </div>
-		                        </td>
+			                <tbody>
 
-		                        <td class="col-sm-1 col-md-1" style="text-align: center">
-		                        	<strong>Quantity</strong>
-		                        </td>
+			                	<!--Replicate this row for more products-->
+			                    <tr>
+			                        <td class="col-sm-8 col-md-6">
+				                        <div class="media">
+				                            <div class="media-left">
+				                            	<img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;">
+				                            </div>	
+				                            <div class="media-body">
+				                                <h4 class="media-heading">Product name</h4>
+				                                <h5 class="media-heading">Shop Name</h5>
+				                            </div>
+				                        </div>
+			                        </td>
 
-		                        <td class="col-sm-1 col-md-1 text-center"><strong>Per unit cost</strong></td>
-		                        <td class="col-sm-1 col-md-1 text-center"><strong>Total cost</strong></td>
-		                        <td class="col-sm-1 col-md-1">
-			                        <button type="button" class="btn btn-danger">
-			                            <span class="glyphicon glyphicon-remove"></span> Remove
-			                        </button>
-			                    </td>
-		                    </tr>
-		                    <!---->
+			                        <td class="col-sm-1 col-md-1" style="text-align: center">
+			                        	<strong>Quantity</strong>
+			                        </td>
+
+			                        <td class="col-sm-1 col-md-1 text-center"><strong>Per unit cost</strong></td>
+			                        <td class="col-sm-1 col-md-1 text-center"><strong>Total cost</strong></td>
+			                        <td class="col-sm-1 col-md-1">
+				                        <button type="button" class="btn btn-danger">
+				                            <span class="glyphicon glyphicon-remove"></span> Remove
+				                        </button>
+				                    </td>
+			                    </tr>
+			                    <!---->
 
 
-		                    <tr>
-		                        <td>   </td>
-		                        <td>   </td>
-		                        <td>   </td>
-		                        <td><h3>Total</h3></td>
-		                        <td class="text-right"><h3><strong>Total</strong></h3></td>
-		                    </tr>
-		                    <tr>
-		                        <td>   </td>
-		                        <td>   </td>
-		                        <td>   </td>
-		                        <td>
-		                        <button type="button" class="btn btn-info">
-		                            <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
-		                        </button></td>
-		                        <td>
-		                        <button type="button" class="btn btn-success">
-		                            Checkout <span class="glyphicon glyphicon-play"></span>
-		                        </button></td>
-		                    </tr>
-		                </tbody>
-		            </table>
-		            </div>
-		            </div>
-		        </div>
-		    </div>
+			                    <tr>
+			                        <td>   </td>
+			                        <td>   </td>
+			                        <td>   </td>
+			                        <td><h3>Total</h3></td>
+			                        <td class="text-right"><h3><strong>Total</strong></h3></td>
+			                    </tr>
+			                    <tr>
+			                        <td>   </td>
+			                        <td>   </td>
+			                        <td>   </td>
+			                        <td>
+			                        <button type="button" class="btn btn-info">
+			                            <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+			                        </button></td>
+			                        <td>
+			                        <button type="button" class="btn btn-success">
+			                            Checkout <span class="glyphicon glyphicon-play"></span>
+			                        </button></td>
+			                    </tr>
+			                </tbody>
+			            </table>
+			            </div>
+			            </div>
+			        </div>
+			    </div>
+			</div>
 		</div>
 	</div>
-		
+
+	<footer class = "foot">
+		<div class="container">
+	  		Applied Database Practicum
+		</div>  
+	</footer>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
     <!-- Latest compiled and minified JavaScript -->

@@ -8,89 +8,45 @@
     <link rel = "stylesheet" href = "ItemDisplay.css">
     <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
   </head>
 
   <body>
 
-<!--    <nav class="navbar navbar-default navbar-fixed-top">
-    	<div class = "container-fluid">
-	    	
-  	     	<div id = "title">
-  	    		<div class = "col-md-3">
-  	    			<h3><b>Shopping Assistant</b></h3>
-  	    		</div>
-  	    	</div>
-
-          
-          <div class = "col-md-4">
-            <div id = "Links">   
-              <ul class="nav nav-pills">
-                <li role="presentation">
-                  <a href="HomePage.php"><h4><span class="glyphicon glyphicon-home"></span> Home</h4></a>
-                </li>
-
-                <li><h2></h2></li>
-                
-                <li role="presentation">
-                  <a href="ShoppingCart.php"><h4><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</h4></a>
-                </li>
-              </ul>
-            </div>  
-          </div>  
-
-          <div id="custom-search-input">
-            <div class="input-group col-md-5">
-              <input type="text" class="  search-query form-control" placeholder="Search for Item" />
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-danger">
-                  <span class=" glyphicon glyphicon-search"></span>
-                </button>
-              </span>
-            </div>
-          </div>
-
-      </div>    
-    </nav>
--->
-
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container-fluid">
+    <nav class="navbar navbar-fixed-top navbar-bootsnipp animate" role="navigation">
+      <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>        
+          <div class="animbrand">
+            <a class="navbar-brand animate" href="CustomerHomePage.php" style="margin-top: 20px; color: #FFFFFF;">Advanced Shopping Assistant</a>
+          </div>
         </div>
 
-        <div class="collapse navbar-collapse">
-          <ul class = "nav navbar-nav navbar-left">
-          <a id = "title" class="navbar-brand" href="HomePage.php"><h3><strong>Advanced Shopping Assistant</strong></h3></a>  
-          </ul> 
-
-          <form class = "nav navbar-form navbar-left">
-            <div id="custom-search-input">
-              <div class="input-group col-md-12">
-                <input type="text" class="  search-query form-control" placeholder="Search for Item" />
-                <span class="input-group-btn">
-                  <button type="button" class="btn btn-danger">
-                    <span class=" glyphicon glyphicon-search"></span>
-                  </button>
-                </span>
-              </div>
-            </div>
-          </form>
-
-          <div id = "Links">
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="HomePage.php" style =" color: #33a8ff;"><h4><span class="glyphicon glyphicon-home"></span> Home</h4></a></li>
-              <li><a href="ShoppingCart.php" style =" color: #33a8ff;"><h4><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</h4></a></li>
-            </ul>
+      <form class = "nav navbar-form navbar-left">
+        <div id="custom-search-input">
+          <div class="input-group col-md-12">
+            <input type="text" class="  search-query form-control" placeholder="Search for Item" />
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-danger">
+                <span class=" glyphicon glyphicon-search"></span>
+              </button>
+            </span>
           </div>
+        </div>
+      </form>
+
+        <div id = "Links">
+	        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+	          <ul class="nav navbar-nav navbar-right">
+	          <li><a href="CustomerHomePage.php" style ="background-color: transparent !important;color: #FFFFFF;"><h4><span class="glyphicon glyphicon-home"></span> Home</h4></a></li>
+	          <li><a href="#" style ="background-color: transparent !important;color: #FFFFFF;"><h4><span class="glyphicon glyphicon-map-marker"></span> Find Shop</h4></a></li>
+	          <li><a href="ShoppingCart.php" style ="background-color: transparent !important;color: #FFFFFF;"><h4><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</h4></a></li>
+	          </ul>
+	        </div>
         </div>
       </div>
-    </nav>      
+    </nav>
+
+    <div id= "bod">
 
     <div class = "container">  
       <div class = "row">
@@ -110,7 +66,7 @@
             <div class="panel-body">
 
               <div class = "col-md-2">
-                <img class="img-responsive" src="http://placehold.it/200x250" width = "100%" height = "100%">
+                <img class="img-responsive" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" width = "100%" height = "100%">
               </div>
 
               <div class = "col-md-4">
@@ -153,15 +109,30 @@
               </div>
             </div>
           </div>  
+          <!---->
         </div>
       </div>
 
     </div>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <div class = "container">  
+      <div class = "row">
+        <h3 align="center"><small><i>No more results to display!</i></small></h3>
+      </div>
+    </div>  
+
+    </div>
+
+  <footer class = "foot">
+    <div class="container">
+      Applied Database Practicum
+    </div>  
+  </footer>
+
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   
   </body>
+
 </html>
