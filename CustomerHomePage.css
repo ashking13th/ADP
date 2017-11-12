@@ -53,6 +53,9 @@
 
 .foot{
   position: relative;
+  background-image: url(https://cdn.suwalls.com/wallpapers/abstract/polygon-texture-26717-2560x1600.jpg);
+  background-position: top;
+  background-repeat: repeat;
   right: 0;
   bottom: 0;
   left: 0;
@@ -60,8 +63,6 @@
   background-color: #efefef;
   text-align: center;
 }
-
-
 .hp-header{
     position : relative;
     background-color:#5fb0e4;
