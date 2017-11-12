@@ -176,10 +176,41 @@
 
   <footer class = "foot">
     <div class="container">
-      Applied Database Practicum
+        <div class="row">
+            <h3 class="footertext"></h3>
+            <br>
+              <div class="col-md-4">
+                <center>
+                  <img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/cart-remove-icon.png" class="img-circle" alt="..." width="100px" height="100px">
+                  <br>
+                  <h4 class="footertext" style="color:#FFF"><b>Shop</b></h4>
+                  <p class="footertext" style="color:#FFF">Search for items at nearby shops<br>
+                </center>
+              </div>
+              <div class="col-md-4">
+                <center>
+                  <img src="https://cdn1.iconfinder.com/data/icons/flat-world-currency-1/432/Flat_Currency_Rupee-128.png" class="img-circle" alt="..." width="100px" height="100px">
+                  <br>
+                  <h4 class="footertext" style="color:#FFF"><b>Pay</b></h4>
+                  <p class="footertext" style="color:#FFF">Pay online<br>
+                </center>
+              </div>
+              <div class="col-md-4">
+                <center>
+                  <img src="http://downloadicons.net/sites/default/files/shopping-bag-icon-67528.png" class="img-circle" alt="..." width="100px" height="100px">
+                  <br>
+                  <h4 class="footertext" style="color:#FFF"><b>Collect</b></h4>
+                  <p class="footertext" style="color:#FFF">Collect your order when it's ready<br>
+                </center>
+              </div>
+            </div>
+            <div class="row">
+              <center><p class="footertext" style="color: black;"">Copyright CS207</p></center></p>
+                <p><center style="color: #FFF;">Akai Amru Boris Ani</center>
+            </div>
+        </div>
     </div>  
   </footer>
-
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
