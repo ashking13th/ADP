@@ -103,8 +103,15 @@
 				                        </button>
 				                    </td>
 			                    </tr>
-			                    <!---->
 
+			                    <!---->
+			                    <tr>
+			                        <td><h4 align="center">There are no items in your Shopping Cart!</h4></td>
+			                        <td>	</td>
+			                        <td>	</td>
+			                        <td>	</td>
+			                        <td>	</td>
+			                    </tr>
 
 			                    <tr>
 			                        <td>   </td>
@@ -114,17 +121,25 @@
 			                        <td class="text-right"><h3><strong>Total</strong></h3></td>
 			                    </tr>
 			                    <tr>
-			                        <td>   </td>
-			                        <td>   </td>
-			                        <td>   </td>
-			                        <td>
-			                        <button type="button" class="btn btn-info">
-			                            <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
-			                        </button></td>
-			                        <td>
-			                        <button type="button" class="btn btn-success">
-			                            Checkout <span class="glyphicon glyphicon-play"></span>
-			                        </button></td>
+			                    	<form>
+				                        <td>
+				                           		<div class="input-group">
+	  												<span class="input-group-addon" id="sizing-addon1">+91</span>
+													<input type="text" class="form-control" placeholder="Enter your 10-digit mobile number" aria-describedby="sizing-addon1">
+												</div>
+											</td>
+				                        <td>   </td>
+				                        <td>   </td>
+				                        <td>
+				                        <button type="button" class="btn btn-info">
+				                            <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+				                        </button></td>
+				                        <td>
+				                        	<button type="submit" class="btn btn-success">
+				                            	Checkout <span class="glyphicon glyphicon-play"></span>
+				                        	</button>
+				                        </td>	
+			                        </form>
 			                    </tr>
 			                </tbody>
 			            </table>
@@ -141,11 +156,6 @@
 	  		Applied Database Practicum
 		</div>  
 	</footer>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   
   </body>
 
