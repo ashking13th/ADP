@@ -39,6 +39,7 @@
     background-position: right,center;
     background-repeat: no-repeat,repeat;
     padding: 50px;
+    height: 10%;
 }
 
 #find_button{
@@ -63,6 +64,8 @@
   background-color: #efefef;
   text-align: center;
 }
+	
+
 .hp-header{
     position : relative;
     background-color:#5fb0e4;
