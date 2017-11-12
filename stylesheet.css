@@ -41,10 +41,11 @@ form
 }
 
 form.login input[type="text"], form.login input[type="password"]
-{
-    width: 100%;
+{   align-self: center;
+    width: 150%;
+    text-align: left;
     margin: 0;
-    padding: 10px 15px;
+    padding: 20px 20px;
     background: 0;
     border: 0;
     border-bottom: 1px solid #bbbbbb;
