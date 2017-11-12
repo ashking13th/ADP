@@ -125,7 +125,7 @@
 				                        <td>
 				                           		<div class="input-group">
 	  												<span class="input-group-addon" id="sizing-addon1">+91</span>
-													<input type="text" class="form-control" placeholder="Enter your 10-digit mobile number" aria-describedby="sizing-addon1">
+													<input type="text" class="form-control" placeholder="Enter your 10-digit mobile number" aria-describedby="sizing-addon1" maxlength ="10" style="width:75%;">
 												</div>
 											</td>
 				                        <td>   </td>
