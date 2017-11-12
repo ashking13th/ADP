@@ -18,14 +18,34 @@
 
     while($row = mysqli_fetch_assoc($result))
     {
-        $node = $dom->createElement("marker");
-        $newnode = $parnode->appendChild($node);
-        $newnode->setAttribute("id", $row['Shop_id']);
-        $newnode->setAttribute("name", $row['Shop_Name']);
-        $newnode->setAttribute("address", $row['addr']);
-        $newnode->setAttribute("lat", $row['lat']);
-        $newnode->setAttribute("lng", $row['lng']);
-        $newnode->setAttribute("distance", $row['distance']);
+        if(isset($_SESSION['pid'])) 
+        {
+            $table_name = "tabl".(string)($row['Shop_id']);
+            $sql = "SELECT * FROM $table_name WHERE product_id = $_SESSION['pid'] AND qty > 0";
+            $res = mysqli_query($sql);
+            if(mysqli_num_rows($res) > 0)
+            {
+                $node = $dom->createElement("marker");
+                $newnode = $parnode->appendChild($node);
+                $newnode->setAttribute("id", $row['Shop_id']);
+                $newnode->setAttribute("name", $row['Shop_Name']);
+                $newnode->setAttribute("address", $row['addr']);
+                $newnode->setAttribute("lat", $row['lat']);
+                $newnode->setAttribute("lng", $row['lng']);
+                $newnode->setAttribute("distance", $row['distance']);
+            }
+        }
+        else
+        {
+            $node = $dom->createElement("marker");
+            $newnode = $parnode->appendChild($node);
+            $newnode->setAttribute("id", $row['Shop_id']);
+            $newnode->setAttribute("name", $row['Shop_Name']);
+            $newnode->setAttribute("address", $row['addr']);
+            $newnode->setAttribute("lat", $row['lat']);
+            $newnode->setAttribute("lng", $row['lng']);
+            $newnode->setAttribute("distance", $row['distance']);
+        }
     }
     echo $dom->saveXML();
     //storelocator.php?lat=-33.863276&lng=151.107977&radius=11
