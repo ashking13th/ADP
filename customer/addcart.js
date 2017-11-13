@@ -1,4 +1,23 @@
+function updateIcon(abc)
+{
+    alert('cat');
+    var cook = $.cookie('orderlist');
+    var arr = JSON.parse(cook);
+    var len = arr.length;
 
+    var num = 0;
+
+    for(var i=0 ; i<len ; i++)
+    {
+        if(arr[i].qty > 0)
+        {
+            num ++;
+        }
+    }
+
+    document.getElementById('cart_num').innerText = num;
+    alert('abc');
+}
 
 function addToCart(id)
 {
@@ -21,6 +40,9 @@ function addToCart(id)
         var json_str = JSON.stringify(arr);
         $.cookie('orderlist' ,  json_str);
     }
+    //alert('hey');
+    $.notify("Item added to Cart!");
+    //alert('yay');
 }
 
 function checkAndAdd(arr , id , qty) 
