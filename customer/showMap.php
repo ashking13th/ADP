@@ -1,11 +1,10 @@
 <?php
 session_start();
-//echo $_SESSION['pid'];
 ?>
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-  <title>Creating a Store Locator on Google Maps</title>
+  <title>ADA Shops Near You</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -130,7 +129,9 @@ session_start();
          var searchUrl = "storelocator.php?lat=" + lat + "&lng=" + lng +"&radius=" + radius;
          //alert(searchUrl);
          downloadUrl(searchUrl, function(data) {
+          //alert(data);
            var xml = parseXml(data);
+
            var markerNodes = xml.documentElement.getElementsByTagName("marker");
            var bounds = new google.maps.LatLngBounds();
            //alert(markerNodes.length);
@@ -184,7 +185,7 @@ session_start();
           infoWindow.setContent(html);
           infoWindow.open(map, marker);
           //alert("searchOnStore.php?id=" + id);
-          var link = "customerItemsDisplay.php?id=" + id
+          var link = "customerItemsDisplay.php?id=" + id;
           window.location.href = link;
           //this.setIcon(activeicon);
           iAmSelected(id);
@@ -215,6 +216,7 @@ session_start();
         };
         request.open("GET", url, true);
         request.send();
+
      }
      function parseXml(str) 
      {

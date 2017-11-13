@@ -1,9 +1,14 @@
 <?php
     include('config.php');
-    $sid = $_POST['shop_id'];
+    $sid = $_GET['id'];
     $table_name = "tabl".(string)($sid);
     $sql = "SELECT * FROM $table_name WHERE 1";
     $result = mysqli_query($db, $sql);
+
+    $sql2 = "SELECT Shop_Name FROM $shops_table WHERE Shop_id = $sid";
+    $result3 = mysqli_query($db , $sql2);
+    $shopname = mysqli_fetch_array($result3)['Shop_Name'];
+
     if($result == false) 
     {
         echo "No rows found<br/>";

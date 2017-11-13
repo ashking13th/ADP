@@ -38,18 +38,20 @@
     <div id = "bod">      
       <div class="container" align = "center">
 
+        <form action="rareItemSearch.php" method="post">
         <div class="row" align = "center">
             <div id="custom-search-input">
               <div class="input-group col-md-12">
-                <input type="text" class="  search-query form-control" placeholder="Search for an Item" />
+                <input type="text" class="search-query form-control" name="product_name" placeholder="Search for an Item" />
                 <span class="input-group-btn">
-                  <button type="button" class="btn btn-danger">
+                  <button type="submit" class="btn btn-danger">
                     <span class=" glyphicon glyphicon-search"></span>
                   </button>
                 </span>
               </div>
             </div>
         </div>
+        </form>
 
         <div class = "row" align = "center">
           <div class = "col-md-12">

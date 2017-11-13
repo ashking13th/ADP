@@ -97,7 +97,9 @@
             $table_name = "tabl".(string)($row['Shop_id']);
             $pid = $_SESSION['pid'];
             $sql = "SELECT * FROM $table_name WHERE product_id = $pid AND qty > 0";
+            //echo $sql;
             $res = mysqli_query($db, $sql);
+
             if(mysqli_num_rows($res) > 0)
             {
                 $node = $dom->createElement("marker");

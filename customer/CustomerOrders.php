@@ -1,4 +1,10 @@
-<!doctype html>
+<?php
+    include('config.php');
+    session_start();   
+?>
+
+
+
 <html lang="en">
   <head>
     <title>Your Orders</title>
@@ -16,7 +22,7 @@
       <div class="container">
         <div class="navbar-header">
           <div class="animbrand">
-            <a class="navbar-brand animate" href="CustomerHomePage.php" style="margin-top: 20px; color: #FFFFFF;">Advanced Shopping Assistant</a>
+            <a class="navbar-brand animate" href="index.html" style="margin-top: 20px; color: #FFFFFF;">Advanced Shopping Assistant</a>
           </div>
         </div>
 
@@ -42,107 +48,40 @@
       <div id = "Orders">
         <div class="container">
 
-        <!--Replicate this whole row for separate orders-->
-          <div class="row">
-            <div class="col-sm-12 col-md-10 col-md-offset-1">
-              <div class = "panel panel-success" style="background-color: white">
-                <div class="panel-heading" style="text-align: center; background-color: #4ac43c">
-                  <h3 style="color: #FFF"><b>Order Ready!</b></h3>
-                </div>
-                <div class ="panel-body">
-                  <table class="table table-hover">                      
-                    <thead>
-                        <tr>
-                            <th style="text-align: center;">
-                              <h3 style="margin-bottom: 30px;"><b>Shop Name</b></h3>
-                            </th>
-                            <th style="text-align: center;">
-                              <a class="btn btn-danger btn-lg" href="#" role="button">Locate Shop On Map<br><span class=" glyphicon glyphicon-map-marker"></span></a>
-                            </th>
-                        </tr>                          
-                        <tr>
-                            <th style="text-align: center;">
-                              <h4 style="margin-bottom: 30px;"><b>Confirmation Key: </b></h4>
-                            </th>
-                            <th style="text-align: center;">  
-                              <h4 style="margin-bottom: 30px;"><b>########</b></h4>
-                            </th>
-                        </tr>                                                 
-                        <tr>
-                            <th style="text-align: center;">Product</th>
-                            <th style="text-align: center;">Quantity</th>
-                        </tr>
-                    </thead>
+        <?php
+                $phno = $_SESSION['phno'];
+                $sql = "SELECT * FROM globalorders WHERE phno = $phno GROUP BY order_status";
+                $res = mysqli_query($db, $sql);
+                $green = "#4ac43c";
+                $orange = "#f6b43f";
+                $process = "Order Being Processed";
+                $ready = "Order Ready!";
+                
 
-                    <tbody>
+                while($row = mysqli_fetch_array($res))
+                {
+                    $table_name = "ordershop".(string)($row['shop_id']);
+                    $oid = $row['order_id'];
+                    $sql = "SELECT product_id, qty  FROM $table_name WHERE order_id = $oid";
+                    $res2 = mysqli_query($db, $sql);
 
-                        <!--Replicate this row for more products-->
-                        <tr>
-                            <td style="text-align: center;">
-                                Product name
-                            </td>
-                            <td style="text-align: center;">
-                                Quantity
-                            </td>
-                        </tr>
-                        <!---->
-                    </tbody>
-                  </table>                  
-                </div>
-              </div>
-            </div>
-          </div>
-          <!---->
-
-          <div class="row">
-            <div class="col-sm-12 col-md-10 col-md-offset-1">
-              <div class = "panel panel-success" style="background-color: white">
-                <div class="panel-heading" style="text-align: center; background-color: #f6b43f">
-                  <h3 style="color: #FFF"><b>Order Being Processed</b></h3>
-                </div>
-                <div class ="panel-body">
-                  <table class="table table-hover">                      
-                    <thead>
-                        <tr>
-                            <th style="text-align: center;">
-                              <h3 style="margin-bottom: 30px;"><b>Shop Name</b></h3>
-                            </th>
-                            <th style="text-align: center;">
-                              <a class="btn btn-danger btn-lg" href="#" role="button">Locate Shop On Map<br><span class=" glyphicon glyphicon-map-marker"></span></a>
-                            </th>
-                        </tr>                          
-                        <tr>
-                            <th style="text-align: center;">
-                              <h4 style="margin-bottom: 30px;"><b>Confirmation Key: </b></h4>
-                            </th>
-                            <th style="text-align: center;">  
-                              <h4 style="margin-bottom: 30px;"><b>########</b></h4>
-                            </th>
-                        </tr>                                                 
-                        <tr>
-                            <th style="text-align: center;">Product</th>
-                            <th style="text-align: center;">Quantity</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td style="text-align: center;">
-                                Product name
-                            </td>
-                            <td style="text-align: center;">
-                                Quantity
-                            </td>
-                        </tr>
-                    </tbody>
-                  </table>                  
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!---->
-
+                    $message='';
+                    $color = '';
+                    $key =$row['pkey'];
+                    
+                    if($row['order_status'] == 2)
+                    {
+                        $message = $ready;
+                        $color = $green;
+                    }
+                    else
+                    {
+                        $message = $process;
+                        $color = $orange;
+                    }
+                    dispOrder($message , $table_name , $key , $res2 , $color , $db);
+                }
+        ?>
 
         </div>
       </div>
@@ -180,7 +119,7 @@
                 </div>
               </div>
               <div class="row">
-                <center><p class="footertext" style="color: black;"">Copyright CS207</p></center></p>
+                <center><p class="footertext" style="color: black;">Copyright CS207</p></center></p>
                   <p><center style="color: #FFF;">Akai Amru Boris Ani</center>
               </div>
           </div>
@@ -188,53 +127,82 @@
     </footer>
   
   </body>
-
 </html>
 
 
+<?php   
+    function dispProdRow($prod , $qty)
+    {
+?>
+        <tr>
+            <td style="text-align: center;">
+                <?php echo $prod; ?>
+            </td>
+            <td style="text-align: center;">
+                <?php echo $qty; ?>
+            </td>
+        </tr>
+        
+<?php
+    }
 
+    function dispOrder($message , $shop , $key , $res2 , $color,$db)
+    {
+?>
+    
+    <div class="row">
+            <div class="col-sm-12 col-md-10 col-md-offset-1">
+              <div class = "panel panel-success" style="background-color: white">
+                <div class="panel-heading" style="text-align: center; background-color: <?php echo $color; ?>">
+                  <h3 style="color: #FFF"><b><?php echo $message; ?></b></h3>
+                </div>
+                <div class ="panel-body">
                   <table class="table table-hover">                      
-                      <thead>
-                          <tr>
-                              <th>
-                                <h3 style="margin-bottom: 30px;"><b>Shop Name</b></h3>
-                              </th>
-                              <th>
-                                <a class="btn btn-danger btn-lg" href="#" role="button">Locate shop on Map<br><span class=" glyphicon glyphicon-map-marker"></span></a>
-                               </th>
-                          </tr>                          
-                          <tr>
-                              <th>
-                                <h4 style="margin-bottom: 30px;"><b>Confirmation Key: </b></h4>
-                              </th>
-                              <th>  
-                                <h4 style="margin-bottom: 30px;"><b>########</b></h4>
-                              </th>
-                          </tr>                                                 
-                          <tr>
-                              <th>Product</th>
-                              <th>Quantity</th>
-                          </tr>
-                      </thead>
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;">
+                              <h3 style="margin-bottom: 30px;"><b><?php echo $shop; ?></b></h3>
+                            </th>
+                            <th style="text-align: center;">
+                              <a class="btn btn-danger btn-lg" href="#" role="button">Locate Shop On Map<br><span class=" glyphicon glyphicon-map-marker"></span></a>
+                            </th>
+                        </tr>                          
+                        <tr>
+                            <th style="text-align: center;">
+                              <h4 style="margin-bottom: 30px;"><b>Confirmation Key: </b></h4>
+                            </th>
+                            <th style="text-align: center;">  
+                              <h4 style="margin-bottom: 30px;"><b><?php echo $key; ?></b></h4>
+                            </th>
+                        </tr>                                                 
+                        <tr>
+                            <th style="text-align: center;">Product</th>
+                            <th style="text-align: center;">Quantity</th>
+                        </tr>
+                    </thead>
 
-                      <tbody>
-                          <tr>
-                              <td class="col-sm-8 col-md-6">
+                    <tbody>
 
-                              </td>
+                    <?php   
+                        while($row2 = mysqli_fetch_array($res2))
+                        {
+                            $pid = $row2['product_id'];
+                            $sql = "SELECT product_name FROM product_table WHERE product_id = $pid";
+                            $res3 = mysqli_query($db, $sql);
+                            $row3 = mysqli_fetch_array($res3);
+                            $pn = $row3['product_name'];
+                            $qty = $row2['qty'];
+                            dispProdRow($pn , $qty);
+                        }
+                     ?>
 
-                              <td class="col-sm-1 col-md-1" style="text-align: center">
-                                <strong>Quantity</strong>
-                              </td>
+                    </tbody>
+                  </table>                  
+                </div>
+              </div>
+            </div>
+          </div>
 
-                              <td class="col-sm-1 col-md-1 text-center"><strong>Per unit cost</strong></td>
-                              <td class="col-sm-1 col-md-1 text-center"><strong>Total cost</strong></td>
-                              <td class="col-sm-1 col-md-1">
-                                <button type="button" class="btn btn-danger">
-                                    <span class="glyphicon glyphicon-remove"></span> Remove
-                                </button>
-                            </td>
-                          </tr>
-                          </tr>
-                      </tbody>
-                  </table>
+<?php
+    }
+?>
