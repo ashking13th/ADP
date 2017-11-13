@@ -5,27 +5,68 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel = "stylesheet" href = "CustomerHomePage.css">
+ 
     <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+   <link rel = "stylesheet" href = "CustomerHomePage.css">
+
+	<script>
+		function showResult(str)
+		{
+			if (str.length==0) 
+			{
+				document.getElementById("livesearch").innerHTML="";
+				document.getElementById("livesearch").style.border="0px";
+				return;
+			}
+			if (window.XMLHttpRequest) 
+			{
+				xmlhttp=new XMLHttpRequest();
+			}
+			else
+			{
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange=function()
+			{
+				if (this.readyState==4 && this.status==200) 
+				{
+					document.getElementById("livesearch").innerHTML=this.responseText;
+					document.getElementById("livesearch").style.border="1px solid #A5ACB2";
+				}
+			}
+			xmlhttp.open("GET","livesearch.php?q="+str,true);
+			xmlhttp.send();
+		}
+	</script>
   </head>
 
   <body>
 
 
-    <nav class="navbar navbar-fixed-top navbar-bootsnipp animate" role="navigation" style="z-index: 9999999">
-      <div class="container">
-        <div class="navbar-header">
-          <div class="animbrand">
-            <a class="navbar-brand animate" href="index.html">Advanced Shopping Assistant</a>
-          </div>
-        </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-          <ul class="nav navbar-nav navbar-right">
-            <li><h4 style = "color: #33a8ff;"><i>Customer Home Page</i></h4></li>
-          </ul>
-        </div>
-      </div>
+    <nav class="navbar navbar-fixed-top" role="navigation" style="z-index: 9999999">
+      	<div class="container">
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <div class="animbrand">
+		        <a class="navbar-brand animate" href="index.html">Advanced Shopping Assistant</a>
+		      </div>
+		    </div>
+
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+		   	  	<ul class="nav navbar-nav navbar-right">
+					<li style="color: #5FB0E4;margin-top:5px;margin-right: 5px; "><h4>Shopkeepers this way:</h4></li>	
+	           		<li><a href = "ShopkeeperLogin.html" style = "background-color: transparent !important;"><b>Login</b></a></li>
+	           		<li><a href = "registerKeeper.php" style = "background-color: transparent !important;"><b>Register with us!</b></a></li>
+	            </ul>
+	    	</div>
+  	  	</div>
     </nav>
 
     <div class="hp-header">
@@ -39,18 +80,19 @@
       <div class="container" align = "center">
 
         <form action="rareItemSearch.php" method="post">
-        <div class="row" align = "center">
-            <div id="custom-search-input">
-              <div class="input-group col-md-12">
-                <input type="text" class="search-query form-control" name="product_name" placeholder="Search for an Item" />
-                <span class="input-group-btn">
-                  <button type="submit" class="btn btn-danger">
-                    <span class=" glyphicon glyphicon-search"></span>
-                  </button>
-                </span>
-              </div>
-            </div>
-        </div>
+	        <div class="row" align = "center">
+	            <div id="custom-search-input">
+	              <div class="input-group col-md-12">
+	                <input type="text" class="search-query form-control" name="product_name" placeholder="Search for an Item" />
+	                <div id = "livesearch>"></div>
+	                <span class="input-group-btn">
+	                  <button type="submit" class="btn btn-danger">
+	                    <span class=" glyphicon glyphicon-search"></span>
+	                  </button>
+	                </span>
+	              </div>
+	            </div>
+	        </div>
         </form>
 
         <div class = "row" align = "center">

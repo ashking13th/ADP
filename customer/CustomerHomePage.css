@@ -1,3 +1,8 @@
+.navbar {
+    background-color: #FFF;
+    min-height: 50px;
+    border-bottom: 1px solid #5fb0e4;
+}
 
 #custom-search-input {
         margin: 0;
@@ -35,9 +40,9 @@
 }
 
 #bod{
-    background-image: url(http://www.clker.com/cliparts/7/u/T/H/0/L/carrito-best.svg),url(https://s3.amazonaws.com/spoonflower/public/design_thumbnails/0313/0881/rrOff-white_F6ECC3_matches_Fretting-for-Klimt-on-off-white_shop_thumb.png);
-    background-position: right,center;
-    background-repeat: no-repeat,repeat;
+    background-image: url(https://s3.amazonaws.com/spoonflower/public/design_thumbnails/0313/0881/rrOff-white_F6ECC3_matches_Fretting-for-Klimt-on-off-white_shop_thumb.png);
+    background-position: center;
+    background-repeat: repeat;
     padding: 50px;
     height: 10%;
 }
