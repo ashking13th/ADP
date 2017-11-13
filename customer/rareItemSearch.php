@@ -1,7 +1,7 @@
 <?php
     include('config.php');
-    //$pn = $_POST['product_name'];
-    $pn = "Anime";
+    $pn = $_POST['product_name'];
+    //$pn = "Anime";
     $sql = "SELECT product_id, product_name FROM product_table WHERE product_name LIKE '%".$pn."%'";
     $result = mysqli_query($db, $sql);
     $message = "No more search results !"
