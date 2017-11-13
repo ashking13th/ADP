@@ -5,9 +5,9 @@
 	$uid = $_POST['user_id'];
 	$password = $_POST['pass'];
 	
-	$sql = "SELECT User-id FROM Users WHERE User-id = '$uid' AND Password = '$password'";
+	$sql = "SELECT user_id FROM users WHERE user_id = '$uid' AND pass = '$password'";
+	//echo $sql;
 	$result = mysqli_query($db, $sql);
-	$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 	
 	$count = mysqli_num_rows($result);
 	
@@ -15,11 +15,10 @@
 	{
 		$_SESSION['login_user'] = $uid;
 		
-		header("location: welcome.php");
+		header("location: viewshop.php");
 	}
 	else
 	{
-		header("location: ShopkeeperLogin.php");
+		header("location: ShopkeeperLogin.html");
 	}
-	
 ?>

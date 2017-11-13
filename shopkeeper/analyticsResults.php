@@ -1,12 +1,23 @@
 <?php
     include('session.php');
-    //$_SESSION['shop_id'] = NULL;
-    $sql = "SELECT * FROM shops_table WHERE owner = '$login_session'";
-    $result = mysqli_query($db, $sql);
-    
-    //echo "<p><a href = \"AddShop.html\">Add Shop</a></p>";
-?>
 
+    $sql = "";
+    $go = 0;
+    if(isset($_POST['grp'])) $go = 1;
+    $so = $_POST['sort'];
+    if($so == 1) $so = 0;
+    else $so = 1;
+    $table_name = "tabl".(string)($_SESSION['shop_id']);
+    if($so == 0 && $go == 0) $sql = "SELECT product_id, qty, sold AS ts FROM $table_name ORDER BY ts";
+    else if($so == 0 && $go == 1) $sql = "SELECT tag AS product_id, SUM(qty) AS qty, SUM(sold) AS ts FROM $table_name GROUP BY tag ORDER BY ts";
+    else if($so == 1 && $go == 0) $sql = "SELECT product_id, qty, sold AS ts FROM $table_name ORDER BY ts DESC";
+    else $sql = "SELECT tag AS product_id, SUM(qty) AS qty, SUM(sold) AS ts FROM $table_name GROUP BY tag ORDER BY ts DESC";
+    
+    //echo $sql;
+    $res = mysqli_query($db, $sql);
+
+
+?>
 <!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
@@ -15,7 +26,7 @@
     <meta name="author" content="">
     <link rel="icon" href="http://getbootstrap.com/favicon.ico">
 
-    <title>ADA - Analytics</title>
+    <title>ADA - Analytics Results</title>
 
     <!-- Bootstrap core CSS -->
     <link href="./bootstrap.min.css" rel="stylesheet">
@@ -67,53 +78,76 @@
       </ul>
     </nav>
 
-
         <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
-          <h1>Analytics </h1>
-        <div class="container" >
-        <div class="row>">
-        <div class = "panel panel-default" style ="margin-left: 15%">
-            <div class="panel-body">
-                <form class="form-horizontal" action="analyticsResults.php" method="post">
-                <fieldset>
-                <div class="form-group">
-                <label class="col-md-4 control-label" for="selectbasic"><h5>Sort Type</h5></label>
-                <div class="col-md-4">
-                    <select id="selectbasic" name="sort" class="form-control" require="">
-                    <option value="1">Ascending</option>
-                    <option value="2">Descending</option>
-                    </select>
-                </div>
-                </div>
+          <h1>Analytics Results</h1>
 
-                <!-- Multiple Checkboxes -->
-                <div class="form-group">
-                <label class="col-md-4 control-label" for="checkboxes">Group by Tags</label>
-                <div class="col-md-4">
-                    <div class="checkbox">
-                        <label for="checkboxes-0">
-                        <input type="checkbox" name="grp" id="checkboxes-0" value="1">
-                        Yes
-                        </label>
-                    </div>
-                </div>
-                </div>
-                </div>
 
-                <!-- Button -->
-                <div class="form-group">
-                <span class="col-md-4" align = "center">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                <?php 
+                    if($go === 1)
+                    {
+                        ?>
+                            <th>Tag</th>
+                    <?php
+                    }
+                    if($go === 0)
+                    {
+                        ?>
+                            <th>Product Id</th>
+                            <th>Product Name</th>
+                    <?php
+                    }
+                ?>
+                  
+                  <th>Quantity</th>
+                  <th>Items Sold</th>
+                </tr>
+              </thead>
+              <tbody>
 
-                    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Generate Analytics</button>
-                </span>
-                </div>
+              <?php
+                
+                                while($row = mysqli_fetch_array($res))
+                                {
+                                    $pid = $row['product_id'];
+                                    //echo $pid;
+                                    $qty = $row['qty'];
+                                    //echo $qty;
+                                    $sq = $row['ts'];
+                                    $query = "SELECT product_name FROM product_table WHERE product_id = $pid";
+                                    //echo $query;
+                                    $res2 = mysqli_query($db, $query);
+                                    $row2 = mysqli_fetch_array($res2);
+                                    $pn = $row2['product_name'];
+                                    //display($pid, $pn, $qty, $sq);
+                                    if($go === 1)
+                                    {
+                                        echo "<tr><td>".$row['product_id']."</td><td>".$qty."</td><td>".$sq."</td></tr>";
+                                    }
+                                    
+                                    else
+                                    {
+                                        echo "<tr><td>".$pid."</td><td>".$pn."</td><td>".$qty."</td><td>".$sq."</td></tr>";
+                                    }
+                                }
+              ?>
+              </tbody>
+            </table>
+          </div>
 
-                </fieldset>
-                </form>
+            <div class="row" >
+            <div class="col-md-4"></div>
+            <div sclass = "col-md-4"> 
+              <form class="form-inline mt-2 mt-md-0" action="AddItems.php" method="POST" >
+              <span><input name="product_name" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button></span>
+            </form>
             </div>
-        </div>
-        </div>
-
+            <div class="col-md-4"></div>
+            </div>
 
         </main>
       </div>
