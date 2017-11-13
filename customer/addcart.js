@@ -41,7 +41,7 @@ function addToCart(id)
         $.cookie('orderlist' ,  json_str);
     }
     //alert('hey');
-    $.notify("Item added to Cart!");
+    $.notify("Item added to Cart!" , "success");
     //alert('yay');
 }
 
