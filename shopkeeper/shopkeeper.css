@@ -1,0 +1,75 @@
+
+/**
+ * parallax.css
+ * @Author Original @msurguy -> http://bootsnipp.com/snippets/featured/parallax-login-form
+ * @Reworked By @kaptenn_com 
+ * @package PARALLAX LOGIN.
+ */
+    
+    .form-signin input[type="text"] {
+        margin-bottom: 10px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+
+    }
+  
+    .form-signin input[type="password"] {
+        margin-bottom: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+    .form-signin .form-control {
+        position: relative;
+        font-size: 20px;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        height: auto;
+        padding: 10px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .vertical-offset-100 {
+        padding-top: 100px;
+    }
+
+     .navbar
+      {
+    background-image: url(https://cdn.suwalls.com/wallpapers/abstract/polygon-texture-26717-2560x1600.jpg);
+    min-height: 50px;
+    border-bottom: 1px solid #5fb0e4;
+
+      }
+    .panel {
+        width: 500px;
+    margin-bottom: 20px;
+   
+    background-color: rgba(255, 255, 255, 0.75);
+    border: 1px solid transparent;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    }
+#bod{
+    background-color: #f6f7f2;
+    background-image: url(http://www.clker.com/cliparts/7/u/T/H/0/L/carrito-best.svg);
+    background-position: right,center;
+    background-repeat: no-repeat,repeat;
+    padding: 10%;
+}
+
+
+
+.foot{
+  position: absolute;
+  position: bottom;
+  background-image: url(https://cdn.suwalls.com/wallpapers/abstract/polygon-texture-26717-2560x1600.jpg);
+  background-position: top;
+  background-repeat: repeat;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
+    
