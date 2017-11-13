@@ -78,30 +78,55 @@
 
     <div id = "bod">      
       <div class="container" align = "center">
-
-        <form action="rareItemSearch.php" method="post">
-	        <div class="row" align = "center">
-	            <div id="custom-search-input">
-	              <div class="input-group col-md-12">
-	                <input type="text" class="search-query form-control" name="product_name" placeholder="Search for an Item" />
-	                <div id = "livesearch>"></div>
-	                <span class="input-group-btn">
-	                  <button type="submit" class="btn btn-danger">
-	                    <span class=" glyphicon glyphicon-search"></span>
-	                  </button>
-	                </span>
-	              </div>
-	            </div>
-	        </div>
-        </form>
-
-        <div class = "row" align = "center">
-          <div class = "col-md-12">
-          	<div id = "find_button">
-              <a class="btn btn-primary btn-lg" href="showMap.php" role="button"> Find Shops Near You <span class=" glyphicon glyphicon-map-marker"></span></a>
-            </div>
-        	</div>
-        </div>
+      	<div class = "row">
+      		<div class="col-md-6">
+		        <div class="row" align = "center">
+			        <div class = "panel panel-default" style = "background-image: url(http://www.powerpointhintergrund.com/uploads/2017/06/polygon-background-1-jpg-1.jpeg); background-position: right bottom; height:355px;">
+			          <div class = "panel-body">	 	
+			        	<p>
+			        		<h1 style="color: #FFF; font-family: Courier New,monospace; font-size: 50px;"><b>
+			        			Welcome Customer!
+			        		</b></h1>		        		
+			        	</p>
+			        	<p style="color: #FFF; font-family: Courier New,monospace; font-size: 40px;">
+			        		Order and Pay online.
+			        		Collect your Order when it's Ready.
+			        	</p>
+			          </div>
+			        </div>  	
+		        </div>
+      		</div>         	
+      		<div class = "col-md-6">
+		        <div class="row">
+			        <div class = "panel panel-default" style = "background-image: url(http://www.powerpointhintergrund.com/uploads/2017/06/polygon-background-1-jpg-1.jpeg); background-position: right bottom; height:355px;">
+			          <div class = "panel-body">	 	
+			            <p><b><h4 style = "color:#FFF">SEARCH A PRODUCT BY IT'S NAME</h4></b></p>
+			            <div id="custom-search-input">
+			              <div class="input-group col-md-12">
+			                <input type="text" class="search-query form-control" name="product_name" placeholder="Search for an Item" onkeyup="showResult(this.value)"/>
+			                <div id = "livesearch"></div>
+			                <span class="input-group-btn">
+			                  <button type="submit" class="btn btn-danger">
+			                    <span class=" glyphicon glyphicon-search"></span>
+			                  </button>
+			                </span>
+			              </div>
+			          </div>
+			         			            
+		        </div>
+		        <div class = "row" style="margin-top: -30px; margin-bottom: 10px;">
+		        <h1 style = "color:#FFF"><b>OR</b></h1>
+		        </div>
+		        <div class = "row">
+			            <p><b><h4 style = "color:#FFF">GO THROUGH PRODUCTS OF A SHOP NEAR YOU</h4></b></p>
+			           	<div id = "find_button">
+			            	<a class="btn btn-default btn-lg" href="showMap.php" role="button" style="background-color: #eb6156;color:#FFF"> Find Shops Near You <span class=" glyphicon glyphicon-map-marker"></span></a>
+			            </div>
+			          </div>  		        	
+			        </div>    		
+		        </div>
+		    </div>    
+	    </div>    
       </div>    
     </div>
 

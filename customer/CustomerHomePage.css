@@ -7,6 +7,8 @@
 #custom-search-input {
         margin: 0;
         padding: 30px;
+        margin-left: 20px;
+        margin-top: 10px;
 }
 
 #custom-search-input .search-query {
@@ -40,21 +42,21 @@
 }
 
 #bod{
-    background-image: url(https://s3.amazonaws.com/spoonflower/public/design_thumbnails/0313/0881/rrOff-white_F6ECC3_matches_Fretting-for-Klimt-on-off-white_shop_thumb.png);
+    background-color: #f2f4f4;
     background-position: center;
     background-repeat: repeat;
-    padding: 50px;
-    height: 10%;
+    padding: 30px;
 }
 
 #find_button{
     position: relative;
 	text-align: center;
-	margin-top: 100px;
-    margin-bottom: 100px;
+	margin-top: 30px;
+    margin-bottom: 30px;
+    margin-right: 105px;
 	font-size: 30px;
 	width:20%;
-    background-color: #54d8ce;
+    color:#FFF;
 }
 
 .foot{
@@ -74,7 +76,7 @@
 .hp-header{
     position : relative;
     background-color:#5fb0e4;
-    background-image:url(https://cdn-images-1.medium.com/max/1600/0*2IjtOciik85gJ5qD.jpg);
+    background-image:url(https://s3.envato.com/files/72353627/prev2-Abstract-Polygon-Background.jpg);
     background-position: top;
     background-repeat: repeat;
     background-size:cover;
