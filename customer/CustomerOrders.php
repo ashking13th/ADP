@@ -28,13 +28,44 @@
 
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
             <ul class="nav navbar-nav navbar-right">
-            <li><h3 style ="margin-top: 30px; color: #FFFFFF;">Your Orders</h3></li>
+	          <li><a href="index.html" style ="background-color: transparent !important;color: #FFFFFF; margin-top:10px;"><h4><span class="glyphicon glyphicon-home"></span> Home</h4></a></li>
+	          <li><a href="showMap.php" style ="background-color: transparent !important; color: #FFFFFF; margin-top:10px;"><h4><span class="glyphicon glyphicon-map-marker"></span> Find Shop</h4></a></li>
+            <li><a href="CustomerOrders.php" style="margin-top:-10px;background-color: transparent !important;color: #FFFFFF;"><h4 style ="margin-top: 30px; color: #FFFFFF;">Your Orders</h4></a></li>
           </div>
       </div>
     </nav>
 
 
     <div id = "bod">
+
+
+    <div id = "Orders">
+        <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-md-offset-1">
+              <div class = "panel panel-default" style="background-color: white">
+                <div class ="panel-body"  align="center">
+                    <form action="CustomerOrders.php" method="post" style="margin-left:40px;">
+                        <div class="input-group"> 
+                            <span class="input-group-addon" id="sizing-addon1" >+91</span>
+                            <input required="" name="phno" type="text" class="form-control" placeholder="Enter your 10-digit mobile number" aria-describedby="sizing-addon1" maxlength ="10" style="width:75%;">
+                            <span>
+                        <button type="submit" class="btn btn-success" >
+                           	View Orders <span class="glyphicon glyphicon-play"></span>
+                       	</button>                    
+                        </span>
+                        </div>
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          </div>
+
+
+<?php  if(isset($_SESSION['phno']) || isset($_POST['phno']))
+{?>
       <div class = "container">  
         <div class = "row">
           <div id = "row2">
@@ -43,28 +74,30 @@
             </div>
           </div>
         </div>
-      </div>  
+      </div>  <?php } ?>
 
       <div id = "Orders">
         <div class="container">
 
         <?php
                 $phno = $_SESSION['phno'];
-                $sql = "SELECT * FROM globalorders WHERE phno = $phno GROUP BY order_status";
+                if(isset($_POST['phno']))
+                {
+                  $phno = $_POST['phno'];
+                }
+                $sql = "SELECT * FROM globalorders WHERE phno = $phno";
                 $res = mysqli_query($db, $sql);
                 $green = "#4ac43c";
                 $orange = "#f6b43f";
                 $process = "Order Being Processed";
                 $ready = "Order Ready!";
-                
-
+               // echo mysqli_num_rows($res);
                 while($row = mysqli_fetch_array($res))
                 {
                     $table_name = "ordershop".(string)($row['shop_id']);
                     $oid = $row['order_id'];
                     $sql = "SELECT product_id, qty  FROM $table_name WHERE order_id = $oid";
                     $res2 = mysqli_query($db, $sql);
-
                     $message='';
                     $color = '';
                     $key =$row['pkey'];
@@ -145,7 +178,6 @@
         
 <?php
     }
-
     function dispOrder($message , $shop , $key , $res2 , $color,$db)
     {
 ?>
