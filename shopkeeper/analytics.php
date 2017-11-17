@@ -76,6 +76,7 @@
             <div class="panel-body">
                 <form class="form-horizontal" action="analyticsResults.php" method="post">
                 <fieldset>
+
                 <div class="form-group">
                 <label class="col-md-4 control-label" for="selectbasic"><h5>Sort Type</h5></label>
                 <div class="col-md-4">
@@ -97,6 +98,21 @@
                         </label>
                     </div>
                 </div>
+                </div>
+                </div>
+
+
+                <div class="form-group">
+                <label class="col-md-4 control-label" for="selectbasic"><h5>From date</h5></label>
+                <div class="col-md-4">
+                  <input type="date" name="stime">
+                </div>
+                </div>
+
+                <div class="form-group">
+                <label class="col-md-4 control-label" for="selectbasic"><h5>To date</h5></label>
+                <div class="col-md-4">
+                  <input type="date" name="etime">
                 </div>
                 </div>
 

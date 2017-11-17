@@ -2,17 +2,46 @@
     include('session.php');
 
     $sql = "";
+    $sid = $_SESSION['shop_id'];
+    $table1 = "oid".(string)($sid);
+    $table2 = "ordershop".(string)($sid);
+    $sql = "SELECT * FROM temp";
+    $tr = mysqli_query($db, $sql);
+    if($tr) 
+    {
+      $sql = "DROP VIEW temp";
+      mysqli_query($db, $sql);
+    }
+    if(isset($_POST['stime']) && isset($_POST['etime'])) 
+    {
+      $time1 = $_POST['stime'];
+      $time2 = $_POST['etime'];
+      $sql = "CREATE VIEW temp As (SELECT $table2.order_id, product_id, qty FROM $table1 RIGHT JOIN $table2 ON $table1.order_id = $table2.order_id WHERE timestamp BETWEEN '$time1' AND '$time2')";
+      mysqli_query($db, $sql);
+    }
+    else
+    {
+      $sql = "CREATE VIEW temp AS SELECT * FROM $table1 RIGHT JOIN $table2 ON $table1.order_id = $table2.order_id";
+      mysqli_query($db, $sql);
+    }
     $go = 0;
-    if(isset($_POST['grp'])) $go = 1;
-    $so = $_POST['sort'];
+    if(isset($_POST['grp']))
+    {
+      $go = 1;
+      $sql = "SELECT product_id % 4 AS tag, SUM(qty) AS ts FROM temp GROUP BY tag ORDER BY ts";
+    }
+    else $sql = "SELECT product_id, SUM(qty) AS ts FROM temp GROUP BY product_id ORDER BY ts";
+    if($_POST['sort'] == 2) $sql = $sql." DESC";  
+    /*$so = $_POST['sort'];
     if($so == 1) $so = 0;
     else $so = 1;
     $table_name = "tabl".(string)($_SESSION['shop_id']);
     if($so == 0 && $go == 0) $sql = "SELECT product_id, qty, sold AS ts FROM $table_name ORDER BY ts";
     else if($so == 0 && $go == 1) $sql = "SELECT tag AS product_id, SUM(qty) AS qty, SUM(sold) AS ts FROM $table_name GROUP BY tag ORDER BY ts";
     else if($so == 1 && $go == 0) $sql = "SELECT product_id, qty, sold AS ts FROM $table_name ORDER BY ts DESC";
-    else $sql = "SELECT tag AS product_id, SUM(qty) AS qty, SUM(sold) AS ts FROM $table_name GROUP BY tag ORDER BY ts DESC";
+    else $sql = "SELECT tag AS product_id, SUM(qty) AS qty, SUM(sold) AS ts FROM $table_name GROUP BY tag ORDER BY ts DESC";*/
     
+    //echo $sql;
     //echo $sql;
     $res = mysqli_query($db, $sql);
 
@@ -102,7 +131,6 @@
                     }
                 ?>
                   
-                  <th>Quantity</th>
                   <th>Items Sold</th>
                 </tr>
               </thead>
@@ -112,27 +140,33 @@
                 
                                 while($row = mysqli_fetch_array($res))
                                 {
-                                    $pid = $row['product_id'];
-                                    //echo $pid;
-                                    $qty = $row['qty'];
-                                    //echo $qty;
+                                    $pid = "";
                                     $sq = $row['ts'];
-                                    $query = "SELECT product_name FROM product_table WHERE product_id = $pid";
-                                    //echo $query;
-                                    $res2 = mysqli_query($db, $query);
-                                    $row2 = mysqli_fetch_array($res2);
-                                    $pn = $row2['product_name'];
+                                    if($go != 1) 
+                                    {
+                                      $pid = $row['product_id'];
+                                      //echo $pid;
+                                      //echo $qty;
+                                      
+                                      $query = "SELECT product_name FROM product_table WHERE product_id = $pid";
+                                      //echo $query;
+                                      $res2 = mysqli_query($db, $query);
+                                      $row2 = mysqli_fetch_array($res2);
+                                      $pn = $row2['product_name'];
+                                    }
                                     //display($pid, $pn, $qty, $sq);
                                     if($go === 1)
                                     {
-                                        echo "<tr><td>".$row['product_id']."</td><td>".$qty."</td><td>".$sq."</td></tr>";
+                                        echo "<tr><td>".$row['tag']."</td><td>".$sq."</td></tr>";
                                     }
                                     
                                     else
                                     {
-                                        echo "<tr><td>".$pid."</td><td>".$pn."</td><td>".$qty."</td><td>".$sq."</td></tr>";
+                                        echo "<tr><td>".$pid."</td><td>".$pn."</td><td>".$sq."</td></tr>";
                                     }
                                 }
+                                $sql = "DELETE VIEW temp";
+                                mysqli_query($db ,$sql);
               ?>
               </tbody>
             </table>
